@@ -14,7 +14,7 @@ public class ProductMapper {
                 .name(request.getName())
                 .description(request.getDescription())
                 .price(request.getPrice())
-                .stockQuantity(request.getStockQuantity())
+                .stockQty(request.getStockQuantity())
                 .category(request.getCategory())
                 .active(request.getActive() != null ? request.getActive() : true)
                 .build();
@@ -27,7 +27,7 @@ public class ProductMapper {
                 .name(product.getName())
                 .description(product.getDescription())
                 .price(product.getPrice())
-                .stockQuantity(product.getStockQuantity())
+                .stockQuantity(product.getStockQty())
                 .category(product.getCategory())
                 .active(product.getActive())
                 .createdAt(product.getCreatedAt())
@@ -40,7 +40,7 @@ public class ProductMapper {
         product.setName(request.getName());
         product.setDescription(request.getDescription());
         product.setPrice(request.getPrice());
-        product.setStockQuantity(request.getStockQuantity());
+        product.setStockQty(request.getStockQuantity());
         product.setCategory(request.getCategory());
         if (request.getActive() != null) {
             product.setActive(request.getActive());

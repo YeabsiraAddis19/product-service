@@ -50,7 +50,7 @@ class ProductServiceImplTest {
                 .name("Test Product")
                 .description("Test Description")
                 .price(new BigDecimal("29.99"))
-                .stockQuantity(100)
+                .stockQty(100)
                 .category("Electronics")
                 .active(true)
                 .createdAt(LocalDateTime.now())

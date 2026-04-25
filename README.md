@@ -1,17 +1,25 @@
 # Product Service
 
+![CI](https://github.com/YeabsiraAddis19/product-service/actions/workflows/ci.yml/badge.svg)
+
 A Spring Boot REST API for managing products with H2 in-memory database.
 
-## Features
+**Author:** Yeabsira Addis | ATE/8574/14
 
-- Create, Read, Update, Delete (CRUD) operations for products
-- Search products by name, category, or SKU
-- Filter active products
-- Input validation
-- Global exception handling
-- H2 in-memory database
-- JPA/Hibernate for data persistence
-- RESTful API design
+## Technologies
+
+- **Java 17** - Programming language
+- **Spring Boot 3** - Application framework
+- **Maven** - Build and dependency management
+- **Spring Data JPA** - Data persistence abstraction
+- **Hibernate** - ORM framework
+- **H2 Database** - In-memory database for development
+- **Spring Web** - RESTful API development
+- **Spring Validation** - Input validation
+- **Lombok** - Boilerplate code reduction (optional)
+- **JUnit 5** - Unit testing framework
+- **Mockito** - Mocking framework for tests
+- **Spring Boot Test** - Integration testing support
 
 ## Prerequisites
 
@@ -23,7 +31,7 @@ A Spring Boot REST API for managing products with H2 in-memory database.
 ```
 src/
 ├── main/
-│   ├── java/com/ctbe/productservice/
+│   ├── java/com/ctbe/yeabsira/productservice/
 │   │   ├── ProductServiceApplication.java     # Main application class
 │   │   ├── controller/                         # REST controllers
 │   │   ├── dto/                                # Data transfer objects
@@ -35,22 +43,32 @@ src/
 │   └── resources/
 │       └── application.properties              # Application configuration
 └── test/
-    └── java/com/ctbe/productservice/  # Unit and integration tests
+    └── java/com/ctbe/yeabsira/productservice/  # Unit and integration tests
 ```
 
 ## API Endpoints
 
+All endpoints are prefixed with `/api/v1/products`.
+
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| POST | `/api/products` | Create a new product |
-| GET | `/api/products` | Get all products |
-| GET | `/api/products/{id}` | Get product by ID |
-| GET | `/api/products/sku/{sku}` | Get product by SKU |
-| GET | `/api/products/category/{category}` | Get products by category |
-| GET | `/api/products/active` | Get all active products |
-| GET | `/api/products/search?name={name}` | Search products by name |
-| PUT | `/api/products/{id}` | Update a product |
-| DELETE | `/api/products/{id}` | Delete a product |
+| POST | `/api/v1/products` | Create a new product |
+| GET | `/api/v1/products` | Get all products |
+| GET | `/api/v1/products/{id}` | Get product by ID |
+| GET | `/api/v1/products/sku/{sku}` | Get product by SKU |
+| GET | `/api/v1/products/category/{category}` | Get products by category |
+| GET | `/api/v1/products/active` | Get all active products |
+| GET | `/api/v1/products/search?name={name}` | Search products by name |
+| PUT | `/api/v1/products/{id}` | Update a product |
+| DELETE | `/api/v1/products/{id}` | Delete a product |
+
+## Postman Collection
+
+A Postman collection for testing the API endpoints is available in the `postman/` directory:
+
+- **[Product Service Lab 2 Collection](postman/product-service-lab2.json)**
+
+You can import this collection into Postman to quickly test all available endpoints with pre-configured requests and sample data.
 
 ## Building and Running
 
@@ -103,7 +121,7 @@ http://localhost:8080/h2-console
 ### Create a Product
 
 ```bash
-curl -X POST http://localhost:8080/api/products \
+curl -X POST http://localhost:8080/api/v1/products \
   -H "Content-Type: application/json" \
   -d '{
     "sku": "LAPTOP-001",
@@ -119,25 +137,43 @@ curl -X POST http://localhost:8080/api/products \
 ### Get All Products
 
 ```bash
-curl http://localhost:8080/api/products
+curl http://localhost:8080/api/v1/products
 ```
 
 ### Get Product by ID
 
 ```bash
-curl http://localhost:8080/api/products/1
+curl http://localhost:8080/api/v1/products/1
+```
+
+### Get Product by SKU
+
+```bash
+curl http://localhost:8080/api/v1/products/sku/LAP001
+```
+
+### Get Products by Category
+
+```bash
+curl http://localhost:8080/api/v1/products/category/Electronics
+```
+
+### Get Active Products
+
+```bash
+curl http://localhost:8080/api/v1/products/active
 ```
 
 ### Search Products by Name
 
 ```bash
-curl http://localhost:8080/api/products/search?name=laptop
+curl http://localhost:8080/api/v1/products/search?name=laptop
 ```
 
 ### Update a Product
 
 ```bash
-curl -X PUT http://localhost:8080/api/products/1 \
+curl -X PUT http://localhost:8080/api/v1/products/1 \
   -H "Content-Type: application/json" \
   -d '{
     "sku": "LAPTOP-002",
@@ -153,7 +189,7 @@ curl -X PUT http://localhost:8080/api/products/1 \
 ### Delete a Product
 
 ```bash
-curl -X DELETE http://localhost:8080/api/products/1
+curl -X DELETE http://localhost:8080/api/v1/products/1
 ```
 
 ## Configuration
@@ -186,5 +222,7 @@ GitHub Actions workflow is configured for:
 - Building the project with Maven
 - Running all tests
 - Code quality checks (if configured)
+
+The CI badge at the top of this file shows the current build status.
 
 See `.github/workflows/ci.yml` for details.
