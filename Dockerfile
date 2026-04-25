@@ -8,6 +8,9 @@ WORKDIR /build
 COPY .mvn/ .mvn/
 COPY mvnw pom.xml ./
 
+# Ensure mvnw is executable
+RUN chmod +x mvnw
+
 # Copy source code
 COPY src ./src
 
